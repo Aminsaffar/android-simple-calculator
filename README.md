@@ -24,15 +24,15 @@ This project is a basic calculator app developed for Android devices using Java.
 
 ## Requirements
 
-- Android Studio (version X.X.X)
-- Android device or emulator (API level XX)
+- Android Studio
+- Android device or emulator
 
 ## Getting Started
 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/calculator-app.git
+git clone https://github.com/Aminsaffar/android-simple-calculator.git
 ```
 
 2. Open the project in Android Studio.
@@ -81,4 +81,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Feel free to customize the README according to your project's specific details. Add more sections or details as needed. The goal is to provide users and contributors with clear instructions on how to use and contribute to your Android calculator app.
