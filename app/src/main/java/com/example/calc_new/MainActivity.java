@@ -166,6 +166,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 return;
             case "H":
+                //if history in empty show no history
+                if(pervious_calculations_list.size() == 0){
+                    //show no history toast
+                    Snackbar.make(view, "No History", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+
+                    return;
+                }
                 //show all previous calculations in a dialog
                 // setup the alert builder
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
