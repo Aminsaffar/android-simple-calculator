@@ -1,11 +1,13 @@
 package com.example.calc_new;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.os.Bundle;
 
 import com.google.android.material.snackbar.Snackbar;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
@@ -27,17 +29,18 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
     private ArrayList<Button> calculator_buttons = new ArrayList();
 
+    private ArrayList<String> pervious_calculations_list = new ArrayList();
     private Button plus;
     private Button minus;
     private Button multiply;
     private Button divide;
     private Button equals;
     private Button clear;
+    private Button history;
     private Button decimal;
 
     private TextView calc_monitor;
@@ -87,9 +90,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
              minus = (Button) findViewById( R.id.button_minus);
              multiply = (Button) findViewById( R.id.button_multiply);
-                divide = (Button) findViewById( R.id.button_divide);
+             divide = (Button) findViewById( R.id.button_divide);
              equals = (Button) findViewById( R.id.button_equals);
              clear = (Button) findViewById( R.id.button_clear);
+             history = (Button) findViewById( R.id.button_history);
 //             decimal = (Button) findViewById( R.id.button_decimal);
 
             plus.setOnClickListener(this);
@@ -98,6 +102,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             divide.setOnClickListener(this);
             equals.setOnClickListener(this);
             clear.setOnClickListener(this);
+            history.setOnClickListener(this);
 //            decimal.setOnClickListener(this);
 
         }
@@ -147,15 +152,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 try {
                     float answer = eval(calc_monitor.getText().toString());
                     if ((answer * 10) % 10 == 0) {
+                        pervious_calculations_list.add(calc_monitor.getText().toString() + "=" + String.valueOf((int) answer));
                         calc_monitor.setText(String.valueOf((int) answer));
                     } else {
+                        pervious_calculations_list.add(calc_monitor.getText().toString() + "=" + String.valueOf(answer));
                         calc_monitor.setText(String.valueOf(answer));
                     }
                     calc_monitor.setTextColor(getResources().getColor(com.google.android.material.R.color.design_default_color_secondary));
+
                 }catch (Exception ex){
                     calc_monitor.setText(String.valueOf(ex.getMessage() ));
                     calc_monitor.setTextColor(getResources().getColor(com.google.android.material.R.color.design_default_color_error));
                 }
+                return;
+            case "H":
+                //show all previous calculations in a dialog
+                // setup the alert builder
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("History");
+
+                builder.setItems(pervious_calculations_list.toArray(new String[0]), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //get text of which clicked
+                        calc_monitor.setText(pervious_calculations_list.get(which).split("=")[0]);
+                    }
+                });
+                // create and show the alert dialog
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
                 return;
         }
         calc_monitor.setText(calc_monitor.getText().toString() + ((Button)view).getText().toString());

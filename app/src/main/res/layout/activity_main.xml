@@ -12,11 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="61dp"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:weightSum="10"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/calc_monitor"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_margin="10px"
             android:layout_marginStart="10px"
@@ -27,7 +28,22 @@
             android:layout_marginBottom="10px"
             android:text="0"
             android:textAlignment="center"
-            android:textSize="34sp" />
+            android:textSize="34sp"
+            android:layout_weight="9"/>
+
+        <Button
+            android:id="@+id/button_history"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="H"
+            android:textSize="34sp"
+            android:background="@drawable/button_bg"
+            android:backgroundTint="@color/white"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            />
     </LinearLayout>
 
     <LinearLayout

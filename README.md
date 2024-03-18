@@ -23,7 +23,21 @@ This project is a basic calculator app developed for Android devices using Java.
 
 - Addition, subtraction, multiplication, and division operations.
 - Clear button to reset the input.
+- History of previous calculations.
+- Responsive and scalable design.
 - User-friendly interface.
+- Lightweight and easy to use.
+- Compatible with Android devices and emulators.
+- Developed using Java and Android Studio.
+- Open-source and available for contributions.
+- No internet connection required.
+- No ads or in-app purchases.
+- Free to use.
+- No special permissions required.
+- Works on most Android devices.
+- Supports both portrait and landscape orientations.
+- Simple and easy to understand codebase.
+- Well-documented and beginner-friendly.
 
 ## Requirements
 
