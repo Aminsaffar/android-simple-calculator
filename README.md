@@ -1,4 +1,7 @@
-# Calculator App
+# Simple Android Calculator Application
+
+
+![Screenshot](img/screenshot.png)
 
 A simple Android calculator app written in Java.
 
